@@ -1,0 +1,10 @@
+.element {
+  position: relative;
+  border-radius: 15px;
+  background-color: white;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 282px 1fr;
+  width: 282px;
+  justify-self: center;
+}

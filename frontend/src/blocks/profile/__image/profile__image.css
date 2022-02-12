@@ -1,0 +1,21 @@
+.profile__image {
+  background-image: url('https://pimmedia.egger.com/l/decor/U999_2/s/Detail/f/881x513/8803439149086');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 120px;
+  height: 120px;
+  grid-area: image;
+  margin: 3.75px 26.25px 3.75px 0;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+
+}
+
+@media screen and (max-width: 700px) {
+  .profile__image {
+    margin: 3.75px 26.25px 3.75px 22.5px;
+    justify-self: center;
+  }
+}

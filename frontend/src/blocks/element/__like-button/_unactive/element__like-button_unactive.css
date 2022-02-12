@@ -1,0 +1,6 @@
+.element__like-button_unactive {
+  background: url(../../../../images/element__like.svg);
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+}
