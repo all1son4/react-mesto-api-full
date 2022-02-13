@@ -119,7 +119,7 @@ class Api {
 }
 
 const api = new Api({
-  address: "https://nomoreparties.co/v1",
+  address: "http://mesto.allison.backend.nomoredomains.work",
   groupID: "cohort-29",
   token: "624546b9-bde3-4fa2-b3a8-c5df4547d603"
 })
