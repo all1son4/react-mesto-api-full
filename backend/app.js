@@ -5,9 +5,10 @@ const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 const routes = require('./routes');
 const errorHandler = require('./middleware/error-handler');
+const { requestLogger, errorLogger } = require('./middleware/logger');
+
 const { PORT = 3000 } = process.env;
 const app = express();
-const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
