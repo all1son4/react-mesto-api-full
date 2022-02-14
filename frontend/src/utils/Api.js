@@ -63,6 +63,7 @@ class Api {
       headers: {
         authorization: this._token,
       },
+      credentials: 'include'
     }
     return fetch(this._url(query), options)
     .then(this._getResponseData)
@@ -74,6 +75,7 @@ class Api {
       headers: {
         authorization: this._token,
       },
+      credentials: 'include'
     }
     return fetch(this._url(query), options)
     .then(this._getResponseData)
@@ -83,7 +85,8 @@ class Api {
     const options = {
       headers: {
         authorization: this._token
-      }
+      },
+      credentials: 'include'
     }
 
     return fetch(this._url(query), options)
@@ -97,6 +100,7 @@ class Api {
         authorization: this._token,
         "Content-Type": "application/json"
       },
+      credentials: 'include',
       body: JSON.stringify(body)
     }
 
