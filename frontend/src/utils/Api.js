@@ -5,7 +5,7 @@ class Api {
     this._token = token;
   }
 
-  getAppInfo() { //метод полученя все информации со стороны сервера
+  getAppInfo() { //метод полученя всей информации со стороны сервера
     return Promise.all([this.getUserInfoApi(), this.getCardList()])
   }
 
