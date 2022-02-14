@@ -117,7 +117,7 @@ class Api {
       return res.json();
     }
     else {
-      return Promise.reject(`Упс, получилась ошибка: ${res.status}`);
+      return Promise.reject(`${res.status}`);
     }
   }
 }

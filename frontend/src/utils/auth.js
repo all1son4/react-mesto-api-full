@@ -26,6 +26,7 @@ export const authorize = (values) => {
   .then(res => getResponseData(res))
 };
 export const checkToken = (token) => {
+  console.log(token)
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
     headers: {
@@ -43,6 +44,6 @@ const getResponseData = (res) => {
     return res.json();
   }
   else {
-    return Promise.reject(`Упс, получилась ошибка: ${res.status}`);
+    return Promise.reject(`${res.status}`);
   }
 }
