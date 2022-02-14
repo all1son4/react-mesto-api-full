@@ -26,7 +26,6 @@ export const authorize = (values) => {
   .then(res => getResponseData(res))
 };
 export const checkToken = (token) => {
-  console.log(token)
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
     headers: {
