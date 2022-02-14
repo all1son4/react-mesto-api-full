@@ -19,7 +19,6 @@
   "bugs": {
     "url": "https://github.com/all1son4/express-mesto/issues"
   },
-  "homepage": "https://github.com/all1son4/express-mesto#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
