@@ -3,10 +3,10 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
+const cors = require('cors');
 const routes = require('./routes');
 const errorHandler = require('./middleware/error-handler');
 const { requestLogger, errorLogger } = require('./middleware/logger');
-const cors = require('cors');
 
 const { PORT = 3000 } = process.env;
 const app = express();
@@ -16,8 +16,8 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 });
 
 app.use(cors({
-  origin: 'http://mestoofallison.nomoredomains.work', 
-  credentials: true
+  origin: 'http://mestoofallison.nomoredomains.work',
+  credentials: true,
 }));
 
 app.use(bodyParser.json());

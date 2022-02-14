@@ -113,7 +113,9 @@ const login = (req, res, next) => {
     .then((user) => {
       const token = jwt.sign({ _id: user._id }, JWT_SECRET);
 
-      res.cookie('token', token, { maxAge: 3600000 * 24 * 7, httpOnly: true, sameSite: none, secure: true })
+      res.cookie('token', token, {
+        maxAge: 3600000 * 24 * 7, httpOnly: true, sameSite: 'none', secure: true,
+      })
         .send(user.toJSON());
     })
     .catch(next);
