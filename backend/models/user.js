@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcrypt');
 const UnauthorizedError = require('../errors/unauthorized-error');
-const { urlPattern } = require('../config');
+
+const urlPattern = /^((http|https|ftp):\/\/)?(([A-Z0-9][A-Z0-9_-]*)(\.[A-Z0-9][A-Z0-9_-]*)+)/i;
 
 const userSchema = new mongoose.Schema({
   name: {
