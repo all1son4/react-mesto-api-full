@@ -4,7 +4,6 @@ const User = require('../models/user');
 const NotFoundError = require('../errors/not-found-error');
 const BadRequestError = require('../errors/bad-request-error');
 const ConflictError = require('../errors/conflict-error');
-
 const { NODE_ENV, JWT_SECRET } = process.env;
 
 const getUsers = (req, res, next) => User
@@ -107,16 +106,15 @@ const updateAvatar = (req, res, next) => User
   });
 
 const login = (req, res, next) => {
+  console.log('1')
   const { email, password } = req.body;
 
   return User
     .findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, NODE_ENV !== 'production' ? JWT_SECRET : 'jwtsecret');
+      const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'jwtsecret');
 
-      res.cookie('token', token, {
-        maxAge: 3600000 * 24 * 7, httpOnly: true, sameSite: false, secure: true,
-      })
+      res.cookie('token', token, { maxAge: 3600000 * 24 * 7, httpOnly: true, sameSite: true })
         .send(user.toJSON());
     })
     .catch(next);

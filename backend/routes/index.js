@@ -5,7 +5,8 @@ const cardRouter = require('./cards');
 const auth = require('../middleware/auth');
 const { createUser, login } = require('../controllers/users');
 const NotFoundError = require('../errors/not-found-error');
-const { urlPattern } = require('../config');
+
+const urlPattern = /^((http|https|ftp):\/\/)?(([A-Z0-9][A-Z0-9_-]*)(\.[A-Z0-9][A-Z0-9_-]*)+)/i;
 
 router.post('/signup', celebrate({
   body: Joi.object().keys({

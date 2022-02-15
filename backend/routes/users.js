@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Joi, celebrate } = require('celebrate');
-const { urlPattern } = require('../config');
+
+const urlPattern = /^((http|https|ftp):\/\/)?(([A-Z0-9][A-Z0-9_-]*)(\.[A-Z0-9][A-Z0-9_-]*)+)/i;
 
 const {
   getUsers,
