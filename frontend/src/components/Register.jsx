@@ -31,8 +31,6 @@ function Register({onClose, onOverlayClick}) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log(values)
-
     auth
         .register(values)
         .then((res) => {

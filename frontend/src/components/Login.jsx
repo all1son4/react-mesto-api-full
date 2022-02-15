@@ -19,32 +19,6 @@ function Login({onLogin}) {
     info: "Что-то пошло не так! Попробуйте ещё раз."
   }
 
-  // const handleOverlayClick = (event) => {
-  //   if (event.target.classList.contains('popup')) {
-  //     setInfoToolTipIsOpen(false);
-  //   }
-  // }
-
-  // const handleClose = () => {
-  //   setInfoToolTipIsOpen(false)
-  // }
-
-  // React.useEffect(() => {
-  //   if (infoToolTipIsOpen) {
-  //     const handleEsc = (event) => {
-  //       if (event.key === 'Escape') {
-  //         handleClose();
-  //       }
-  //     }
-
-  //     document.addEventListener('keydown', handleEsc);
-
-  //     return () => {
-  //       document.removeEventListener('keydown', handleEsc);
-  //     }
-  //   }
-  // }, [infoToolTipIsOpen]);
-
   const handleChange = (event) => {
     const {name, value} = event.target;
 
@@ -64,7 +38,6 @@ function Login({onLogin}) {
     auth
         .authorize(values)
         .then(res => {
-          console.log(res)
           if (res.statusCode !== 400 || 401 ) {
             if (res.token) {
               setValues({
