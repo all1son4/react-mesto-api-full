@@ -112,7 +112,7 @@ const login = (req, res, next) => {
   return User
     .findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'jwtsecret');
+      const token = jwt.sign({ _id: user._id }, NODE_ENV !== 'production' ? JWT_SECRET : 'jwtsecret');
 
       res.cookie('token', token, {
         maxAge: 3600000 * 24 * 7, httpOnly: true, sameSite: false, secure: true,
