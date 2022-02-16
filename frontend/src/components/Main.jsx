@@ -29,7 +29,7 @@ function Main(props) {
             <Card name={card.name}
                   link={card.link}
                   likes={card.likes}
-                  id={card.owner._id}
+                  id={card.owner}
                   key={card._id}
                   card={card}
                   onCardClick={onCardClick}

@@ -89,14 +89,14 @@ function Register({onClose, onOverlayClick}) {
         required />
         <button type="submit" className="auth__submit-button">Зарегистрироваться</button>
       </form>
-      <Link to="/sign-in" target="_self" className="auth__login-link">Уже зарегистрированы? Войти</Link>
+      <Link to="/signin" target="_self" className="auth__login-link">Уже зарегистрированы? Войти</Link>
       <InfoToolTip isOpen={infoToolTipIsOpen}
                     onOverlayClick={onOverlayClick}
                     onClose={onClose}
                     name='infoToolTip'
                     handleClose={()=> {
                       if (config.status === 'complite')
-                      navigate('/sign-in')
+                      navigate('/signin')
                       }}
                     config={config}
                     setIsOpen={setInfoToolTipIsOpen}

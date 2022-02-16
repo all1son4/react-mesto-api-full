@@ -46,13 +46,13 @@ class Api {
   }
 
   likeCard(cardID) { //метод отправки лайка на сервер
-    const query = `cards/likes/${cardID}`
+    const query = `cards/${cardID}/likes`
 
     return this._put(query, "PUT")
   }
 
   unlikeCard(cardID) { //метод снятия лайка на сервере
-    const query = `cards/likes/${cardID}`
+    const query = `cards/${cardID}/likes`
 
     return this._delete(query, "DELETE")
   }
@@ -61,7 +61,7 @@ class Api {
     const options = {
       method,
       headers: {
-        authorization: this._token,
+        // authorization: this._token,
       },
       credentials: 'include'
     }
@@ -73,7 +73,7 @@ class Api {
     const options = {
       method,
       headers: {
-        authorization: this._token,
+        // authorization: this._token,
       },
       credentials: 'include'
     }
@@ -84,7 +84,7 @@ class Api {
   _get(query) { //GET-запрос для данных от сервера
     const options = {
       headers: {
-        authorization: this._token
+        // authorization: this._token
       },
       credentials: 'include'
     }
@@ -97,7 +97,7 @@ class Api {
     const options = {
       method,
       headers: {
-        authorization: this._token,
+        // authorization: this._token,
         "Content-Type": "application/json"
       },
       credentials: 'include',
@@ -109,7 +109,7 @@ class Api {
   }
 
   _url(query) { //создание ссылки для запросов
-    return `${this._address}/${this._groupID}/${query}`
+    return `${this._address}/${query}`
   }
 
   _getResponseData(res) {
@@ -123,7 +123,7 @@ class Api {
 }
 
 const api = new Api({
-  address: "http://mesto.allison.backend.nomoredomains.work",
+  address: "http://localhost:3000",
   groupID: "cohort-29",
   token: "624546b9-bde3-4fa2-b3a8-c5df4547d603"
 })

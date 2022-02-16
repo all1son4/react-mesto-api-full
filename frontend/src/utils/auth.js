@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://mesto.allison.backend.nomoredomains.work';
+export const BASE_URL = 'http://localhost:3000';
 
 export const register = (values) => {
   return fetch(`${BASE_URL}/signup`, {
@@ -19,17 +19,27 @@ export const authorize = (values) => {
     headers: {
       'Content-Type': 'application/json'
     },
+    credentials: 'include',
     body: JSON.stringify(values)
   })
   .then(res => getResponseData(res))
 };
-export const checkToken = (token) => {
+export const logout = () => {
+  return fetch(`${BASE_URL}/logout`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+}
+
+export const checkToken = () => {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
     },
+    credentials: 'include'
   })
   .then(res => getResponseData(res))
   .then(data => data)

@@ -9,13 +9,13 @@ function Header({loggedIn, onLogout, email}) {
   const handleRegister = (event) => {
     event.preventDefault();
 
-    navigate('/sign-up')
+    navigate('/signup')
   }
 
   const handleLogin = (event) => {
     event.preventDefault();
 
-    navigate('/sign-in')
+    navigate('/signin')
   }
 
   return (

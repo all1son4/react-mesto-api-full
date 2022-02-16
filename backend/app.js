@@ -8,6 +8,7 @@ const { errors } = require('celebrate');
 const cors = require('cors');
 const routes = require('./routes');
 const errorHandler = require('./middleware/error-handler');
+const { requestLogger, errorLogger } = require('./middleware/logger')
 
 const { PORT = 3000 } = process.env;
 const app = express();
@@ -20,10 +21,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
+app.use(requestLogger);
+
 app.use(cors({
-  origin: 'http://mestoofallison.nomoredomains.work',
+  origin: 'http://localhost:3001',
   credentials: true,
 }));
+
+app.use(errorLogger);
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.use(routes);
 app.use(errors());

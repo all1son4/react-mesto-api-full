@@ -122,7 +122,7 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    let isLiked = card.likes.some(i => i === currentUser._id);
 
     if (!isLiked) {
       api
@@ -168,39 +168,49 @@ function App() {
   }
 
   const handleTokenCheck = () => {
-    if (localStorage.getItem('token')) {
-      const token = localStorage.getItem('token');
-      console.log(token);
+    // if (localStorage.getItem('token')) {
+    //   const token = localStorage.getItem('token');
 
       auth
-          .checkToken(token)
+          .checkToken()
           .then((res => {
             if (res) {
               setLoggedIn(true);
-              setUserMail(res.data.email);
+              setUserMail(res.email);
             }
           }))
           .catch(err => alert(`Ошибка полученя данных: ${err}`))
     }
-  }
+  // }
 
   const handleLogout = (event) => {
     event.preventDefault()
 
-    localStorage.removeItem('token');
-    setLoggedIn(false);
+    navigate('/logout')
 
-    navigate('/sign-in');
+    auth
+        .logout()
+        .then(() => {
+          setLoggedIn(false);
+          setUserMail('');
+          navigate('/signin');
+        })
+        .catch(err => alert(`Ошибка попытки выхода: ${err}`))
+
+    // localStorage.removeItem('token');
+    // setLoggedIn(false);
+
+    // navigate('/sign-in');
   }
 
   return (
     <div className="page__container">
       <Header loggedIn={loggedIn} onLogout={handleLogout} email={userMail}/>
       <Routes>
-        <Route path="/sign-up" element={<Register onClose={closeAllPopups}
+        <Route path="/signup" element={<Register onClose={closeAllPopups}
                                                   onOverlayClick={handleOverlayClick}/>}>
         </Route>
-        <Route path="/sign-in" element={loggedIn ? <Navigate to='/' /> : <Login  onLogin={handleLogin}/>}>
+        <Route path="/signin" element={loggedIn ? <Navigate to='/' /> : <Login  onLogin={handleLogin}/>}>
         </Route>
         <Route exact path="/" element={
           <CurrentUserContext.Provider value={currentUser}>

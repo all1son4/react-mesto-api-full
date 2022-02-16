@@ -38,22 +38,25 @@ function Login({onLogin}) {
     auth
         .authorize(values)
         .then(res => {
+          console.log(res)
           if (res.statusCode !== 400 || 401 ) {
-            if (res.token) {
+            // if (res.token) {
               setValues({
                 email: '',
                 password: ''
               })
 
-              localStorage.setItem('token', res.token);
-              console.log(localStorage.getItem('token'))
+
+
+              // localStorage.setItem('token', res.token);
+              // console.log(localStorage.getItem('token'))
               onLogin();
               navigate('/')
             }
-          else {
-            setInfoToolTipIsOpen(true);
+            else {
+              setInfoToolTipIsOpen(true);
             }
-          }
+          // }
         })
         .catch(() => {
           setInfoToolTipIsOpen(true);

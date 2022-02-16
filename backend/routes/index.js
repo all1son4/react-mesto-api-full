@@ -3,7 +3,7 @@ const { Joi, celebrate } = require('celebrate');
 const userRouter = require('./users');
 const cardRouter = require('./cards');
 const auth = require('../middleware/auth');
-const { createUser, login } = require('../controllers/users');
+const { createUser, login, logout } = require('../controllers/users');
 const NotFoundError = require('../errors/not-found-error');
 
 const urlPattern = /^((http|https|ftp):\/\/)?(([A-Z0-9][A-Z0-9_-]*)(\.[A-Z0-9][A-Z0-9_-]*)+)/i;
@@ -23,6 +23,7 @@ router.post('/signin', celebrate({
     password: Joi.string().required().min(8),
   }),
 }), login);
+router.get('/logout', logout);
 router.use(auth);
 router.use('/users', userRouter);
 router.use('/cards', cardRouter);
