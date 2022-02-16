@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://localhost:3000';
+export const BASE_URL = 'http://mestoofallison.nomoredomains.work';
 
 export const register = (values) => {
   return fetch(`${BASE_URL}/signup`, {
