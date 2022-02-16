@@ -207,10 +207,10 @@ function App() {
     <div className="page__container">
       <Header loggedIn={loggedIn} onLogout={handleLogout} email={userMail}/>
       <Routes>
+        <Route path="/signin" element={loggedIn ? <Navigate to='/' /> : <Login  onLogin={handleLogin}/>}> 
         <Route path="/signup" element={<Register onClose={closeAllPopups}
                                                   onOverlayClick={handleOverlayClick}/>}>
         </Route>
-        <Route path="/signin" element={loggedIn ? <Navigate to='/' /> : <Login  onLogin={handleLogin}/>}>
         </Route>
         <Route exact path="/" element={
           <CurrentUserContext.Provider value={currentUser}>

@@ -24,7 +24,7 @@ function Header({loggedIn, onLogout, email}) {
       <div className="header__info-block">
         {loggedIn ? (<p className="header__email">{email}</p>) : ''}
         {loggedIn ? (<button type="button" className="header__button" onClick={onLogout}>Выйти</button>)
-                  : root.pathname === '/sign-in' ? (<button type="button" className="header__button" onClick={handleRegister}>Регистрация</button>)
+                  : root.pathname === '/signin' ? (<button type="button" className="header__button" onClick={handleRegister}>Регистрация</button>)
                     : (<button type="button" className="header__button" onClick={handleLogin}>Войти</button>)}
       </div>
     </header>)
