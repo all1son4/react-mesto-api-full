@@ -34,8 +34,12 @@ function App() {
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    handleGetUser();
-  }, [])
+    // handleTokenCheck();
+    if (loggedIn) {
+      SetHeaderMail();
+    }
+    console.log('SET HEADER')
+  }, [loggedIn])
 
   React.useEffect(()=> {
     if (!loggedIn) return;
@@ -167,23 +171,21 @@ function App() {
   }
 
   const handleLogin = () => {
-    setLoggedIn(true);
+      setLoggedIn(true);
+    console.log('LOGIN')
   }
 
-  const handleGetUser = () => {
-
-      if (loggedIn) {
-        auth
+  const SetHeaderMail = () => {
+      auth
           .getCurrentUserInfo()
           .then((res => {
             if (res) {
-              setLoggedIn(true);
               setUserMail(res.email);
+              console.log('SET EMAIL')
             }
           }))
           .catch(err => alert(`Ошибка полученя данных: ${err}`))
     }
-  }
 
   const handleLogout = (event) => {
     event.preventDefault()
@@ -191,8 +193,8 @@ function App() {
     auth
         .logout()
         .then(() => {
-          setUserMail('');
           setLoggedIn(false);
+          setUserMail('');
           navigate('/signin');
         })
         .catch(err => alert(`Ошибка попытки выхода: ${err}`))
