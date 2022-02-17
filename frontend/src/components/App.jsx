@@ -33,9 +33,9 @@ function App() {
 
   const navigate = useNavigate();
 
-  React.useEffect(() => {
-    handleTokenCheck();
-  }, [])
+  // React.useEffect(() => {
+  //   handleTokenCheck();
+  // }, [])
 
   React.useEffect(()=> {
     if (!loggedIn) return;
@@ -167,23 +167,24 @@ function App() {
 
   const handleLogin = () => {
     setLoggedIn(true);
+    setUserMail(res.email);
+    console.log('LOGIN')
   }
 
-  const handleTokenCheck = () => {
-    // if (localStorage.getItem('token')) {
-    //   const token = localStorage.getItem('token');
+  // const handleTokenCheck = () => {
+  //   // if (localStorage.getItem('token')) {
+  //   //   const token = localStorage.getItem('token');
 
-      auth
-          .checkToken()
-          .then((res => {
-            if (res) {
-              setLoggedIn(true);
-              setUserMail(res.email);
-            }
-          }))
-          .catch(err => alert(`Ошибка полученя данных: ${err}`))
-    }
-  // }
+  //     auth
+  //         .checkToken()
+  //         .then((res => {
+  //           if (res) {
+  //             // setLoggedIn(true);
+  //           }
+  //         }))
+  //         .catch(err => alert(`Ошибка полученя данных: ${err}`))
+  //   }
+  // // }
 
   const handleLogout = (event) => {
     event.preventDefault()
