@@ -167,24 +167,20 @@ function App() {
 
   const handleLogin = () => {
     setLoggedIn(true);
-    setUserMail(res.email);
+    SetUserMail();
     console.log('LOGIN')
   }
 
-  // const handleTokenCheck = () => {
-  //   // if (localStorage.getItem('token')) {
-  //   //   const token = localStorage.getItem('token');
-
-  //     auth
-  //         .checkToken()
-  //         .then((res => {
-  //           if (res) {
-  //             // setLoggedIn(true);
-  //           }
-  //         }))
-  //         .catch(err => alert(`Ошибка полученя данных: ${err}`))
-  //   }
-  // // }
+  const SetUserMail = () => {
+      auth
+          .getCurrentUserInfo()
+          .then((res => {
+            if (res) {
+              setUserMail(res.email);
+            }
+          }))
+          .catch(err => alert(`Ошибка полученя данных: ${err}`))
+    }
 
   const handleLogout = (event) => {
     event.preventDefault()

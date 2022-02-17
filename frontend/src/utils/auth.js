@@ -33,7 +33,7 @@ export const logout = () => {
   })
 }
 
-export const checkToken = () => {
+export const getCurrentUserInfo = () => {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
     headers: {
