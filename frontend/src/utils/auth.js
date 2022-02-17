@@ -1,4 +1,4 @@
-export const BASE_URL = 'mesto.allison.backend.nomoredomains.work';
+export const BASE_URL = 'http://mesto.allison.backend.nomoredomains.work';
 
 export const register = (values) => {
   return fetch(`${BASE_URL}/signup`, {
