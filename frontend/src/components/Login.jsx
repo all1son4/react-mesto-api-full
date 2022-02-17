@@ -38,21 +38,17 @@ function Login({onLogin}) {
     auth
         .authorize(values)
         .then(res => {
-          console.log(res)
+          console.log('AUTH')
           if (res.statusCode !== 400 || 401 ) {
-            // if (res.token) {
-              setValues({
-                email: '',
-                password: ''
-              })
 
-              onLogin(res);
-              navigate('/')
+
+            
+              onLogin();
+              navigate('/');
             }
             else {
               setInfoToolTipIsOpen(true);
             }
-          // }
         })
         .catch(() => {
           setInfoToolTipIsOpen(true);

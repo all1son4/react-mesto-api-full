@@ -24,7 +24,7 @@ app.use(cookieParser());
 app.use(requestLogger);
 
 app.use(cors({
-  origin: 'http://mestoofallison.nomoredomains.work',
+  origin: 'http:/mestoofallison.nomoredomains.work',
   credentials: true,
 }));
 

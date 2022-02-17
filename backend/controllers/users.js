@@ -124,11 +124,8 @@ const login = (req, res, next) => {
 };
 
 const logout = (req, res, next) => {
-  res.cookie('token', '', {
-    maxAge: -1, httpOnly: true, sameSite: false, secure: true,
-  })
-    .end()
-    .catch(next);
+  res.cookieClear('token', { sameSite: false, secure: true,}).status(200).send({message: 'Токен удален'})
+  .catch(next);
 };
 
 module.exports = {

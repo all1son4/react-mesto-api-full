@@ -33,9 +33,9 @@ function App() {
 
   const navigate = useNavigate();
 
-  // React.useEffect(() => {
-  //   handleTokenCheck();
-  // }, [])
+  React.useEffect(() => {
+    handleGetUser();
+  }, [])
 
   React.useEffect(()=> {
     if (!loggedIn) return;
@@ -46,6 +46,7 @@ function App() {
 
         setCurrentUser(userInfoRes);
         setCards(cardListRes);
+        console.log('INFORMATION')
       })
       .catch(err => alert(`Ошибка полученя данных: ${err}`))
   }, [loggedIn])  
@@ -165,29 +166,24 @@ function App() {
     .catch(err => alert(`Ошибка отправки данных: ${err}`));
   }
 
-  const handleLogin = (res) => {
-    if (res) {
-      setUserMail(res.email);
-    }
+  const handleLogin = () => {
     setLoggedIn(true);
-    console.log('LOGIN')
   }
 
-  // const SetHeaderMail = () => {
-  //     auth
-  //         .getCurrentUserInfo()
-  //         .then((res => {
-  //           if (res) {
-  //             setUserMail(res.email);
-  //           }
-  //         }))
-  //         .catch(err => alert(`Ошибка полученя данных: ${err}`))
-  //   }
+  const handleGetUser = () => {
+      auth
+          .getCurrentUserInfo()
+          .then((res => {
+            if (res) {
+              setLoggedIn(true);
+              setUserMail(res.email);
+            }
+          }))
+          .catch(err => alert(`Ошибка полученя данных: ${err}`))
+  }
 
   const handleLogout = (event) => {
     event.preventDefault()
-
-    navigate('/logout')
 
     auth
         .logout()
@@ -197,12 +193,9 @@ function App() {
           navigate('/signin');
         })
         .catch(err => alert(`Ошибка попытки выхода: ${err}`))
-
-    // localStorage.removeItem('token');
-    // setLoggedIn(false);
-
-    // navigate('/sign-in');
   }
+
+  console.log(loggedIn)
 
   return (
     <div className="page__container">
