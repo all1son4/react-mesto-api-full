@@ -171,7 +171,9 @@ function App() {
   }
 
   const handleGetUser = () => {
-      auth
+
+      if (loggedIn) {
+        auth
           .getCurrentUserInfo()
           .then((res => {
             if (res) {
@@ -180,6 +182,7 @@ function App() {
             }
           }))
           .catch(err => alert(`Ошибка полученя данных: ${err}`))
+    }
   }
 
   const handleLogout = (event) => {
