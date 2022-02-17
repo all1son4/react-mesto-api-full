@@ -116,7 +116,7 @@ class Api {
 }
 
 const api = new Api({
-  address: "http://mesto.allison.backend.nomoredomains.work",
+  address: "http://localhost:3000",
   token: "624546b9-bde3-4fa2-b3a8-c5df4547d603"
 })
   

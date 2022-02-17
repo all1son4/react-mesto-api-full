@@ -5,7 +5,7 @@ const UnauthorizedError = require('../errors/unauthorized-error');
 
 const auth = (req, res, next) => {
   console.log('2');
-  const { token } = req.cookies;
+  const token  = req.cookies.jwt;
   let payload;
 
   try {

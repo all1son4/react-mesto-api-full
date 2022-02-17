@@ -188,8 +188,8 @@ function App() {
     auth
         .logout()
         .then(() => {
-          setLoggedIn(false);
           setUserMail('');
+          setLoggedIn(false);
           navigate('/signin');
         })
         .catch(err => alert(`Ошибка попытки выхода: ${err}`))
