@@ -60,9 +60,6 @@ class Api {
   _put(query, method) { //PUT-запрос на сервер для лайка
     const options = {
       method,
-      headers: {
-        // authorization: this._token,
-      },
       credentials: 'include'
     }
     return fetch(this._url(query), options)
@@ -72,9 +69,6 @@ class Api {
   _delete(query, method) { //DELETE запрос для лайка и карточки на сервер
     const options = {
       method,
-      headers: {
-        // authorization: this._token,
-      },
       credentials: 'include'
     }
     return fetch(this._url(query), options)
@@ -83,9 +77,6 @@ class Api {
 
   _get(query) { //GET-запрос для данных от сервера
     const options = {
-      headers: {
-        // authorization: this._token
-      },
       credentials: 'include'
     }
 
