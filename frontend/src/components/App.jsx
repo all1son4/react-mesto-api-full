@@ -165,22 +165,24 @@ function App() {
     .catch(err => alert(`Ошибка отправки данных: ${err}`));
   }
 
-  const handleLogin = () => {
+  const handleLogin = (res) => {
+    if (res) {
+      setUserMail(res.email);
+    }
     setLoggedIn(true);
-    SetUserMail();
     console.log('LOGIN')
   }
 
-  const SetUserMail = () => {
-      auth
-          .getCurrentUserInfo()
-          .then((res => {
-            if (res) {
-              setUserMail(res.email);
-            }
-          }))
-          .catch(err => alert(`Ошибка полученя данных: ${err}`))
-    }
+  // const SetHeaderMail = () => {
+  //     auth
+  //         .getCurrentUserInfo()
+  //         .then((res => {
+  //           if (res) {
+  //             setUserMail(res.email);
+  //           }
+  //         }))
+  //         .catch(err => alert(`Ошибка полученя данных: ${err}`))
+  //   }
 
   const handleLogout = (event) => {
     event.preventDefault()

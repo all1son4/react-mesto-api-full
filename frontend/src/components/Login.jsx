@@ -46,11 +46,7 @@ function Login({onLogin}) {
                 password: ''
               })
 
-
-
-              // localStorage.setItem('token', res.token);
-              // console.log(localStorage.getItem('token'))
-              onLogin();
+              onLogin(res);
               navigate('/')
             }
             else {
