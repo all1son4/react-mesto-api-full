@@ -33,13 +33,16 @@ function App() {
 
   const navigate = useNavigate();
 
-  // React.useEffect(() => {
-  //   // handleTokenCheck();
-  //   if (loggedIn) {
-  //     SetHeaderMail();
-  //   }
-  //   console.log('SET HEADER')
-  // }, [loggedIn])
+  React.useEffect(() => {
+    auth
+      .getCurrentUserInfo()
+      .then((res) => {
+        if (res.ok) {
+          setLoggedIn(true);
+        }
+      })
+      .catch(err => alert(`Ошибка полученя данных и авторизации: ${err}`))
+  },[])
 
   React.useEffect(()=> {
     if (!loggedIn) return;
@@ -50,6 +53,7 @@ function App() {
 
         setCurrentUser(userInfoRes);
         setCards(cardListRes);
+        setUserMail(userInfoRes.email)
         console.log('INFORMATION')
       })
       .catch(err => alert(`Ошибка полученя данных: ${err}`))
@@ -200,7 +204,7 @@ function App() {
         .catch(err => alert(`Ошибка попытки выхода: ${err}`))
   }
 
-  console.log(loggedIn)
+  console.log('PAGE RENDER', loggedIn)
 
   return (
     <div className="page__container">

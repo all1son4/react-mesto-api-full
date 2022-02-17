@@ -1,7 +1,6 @@
 class Api {
   constructor({ address, groupID, token }) {
     this._address = address;
-    this._groupID = groupID;
     this._token = token;
   }
 
@@ -11,8 +10,6 @@ class Api {
 
   getUserInfoApi() { //метод получения информации о пользователе
     const query = "users/me";
-
-    console.log('GET ME')
 
     return this._get(query);
   }
