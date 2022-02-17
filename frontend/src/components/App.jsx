@@ -48,7 +48,7 @@ function App() {
         setCards(cardListRes);
       })
       .catch(err => alert(`Ошибка полученя данных: ${err}`))
-  }, [loggedIn])
+  }, [loggedIn])  
 
   React.useEffect(() => {
     if (isEditProfilePopupOpen || isEditAvatarPopupOpen || isAddPlacePopupOpen || selectedCard.isOpen || isDeleteSubmitPopupOpen) {
@@ -122,12 +122,13 @@ function App() {
   }
 
   function handleCardLike(card) {
-    let isLiked = card.likes.some(i => i === currentUser._id);
+    const isLiked = card.likes.some(i => i === currentUser._id);
 
     if (!isLiked) {
       api
         .likeCard(card._id)
         .then((newCard) => {
+          console.log('NEW', newCard)
           setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
         })
         .catch(err => alert(`Ошибка отправки данных: ${err}`));
@@ -136,6 +137,7 @@ function App() {
       api
         .unlikeCard(card._id)
         .then((newCard) => {
+          console.log('NOT NEW', newCard)
           setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
         })
         .catch(err => alert(`Ошибка отправки данных: ${err}`));

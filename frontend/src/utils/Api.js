@@ -39,20 +39,20 @@ class Api {
     return this._set(query, "POST", {name, link})
   }
 
-  deleteCard(cardID) { //метод удаления карточки на сервере
-    const query = `cards/${cardID}`
+  deleteCard(cardId) { //метод удаления карточки на сервере
+    const query = `cards/${cardId}`
 
     return this._delete(query, "DELETE")
   }
 
-  likeCard(cardID) { //метод отправки лайка на сервер
-    const query = `cards/${cardID}/likes`
+  likeCard(cardId) { //метод отправки лайка на сервер
+    const query = `cards/${cardId}/likes`
 
     return this._put(query, "PUT")
   }
 
-  unlikeCard(cardID) { //метод снятия лайка на сервере
-    const query = `cards/${cardID}/likes`
+  unlikeCard(cardId) { //метод снятия лайка на сервере
+    const query = `cards/${cardId}/likes`
 
     return this._delete(query, "DELETE")
   }

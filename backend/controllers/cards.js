@@ -60,7 +60,7 @@ const likeCard = (req, res, next) => Card
     { new: true },
   )
   .orFail(new NotFoundError(`Карточка с id ${req.params.cardId} не найдена`))
-  .then((card) => res.status(200).send(card.likes))
+  .then((card) => res.status(200).send(card))
   .catch((err) => {
     if (err.name === 'CastError') {
       next(new BadRequestError('Некорректный id'));
@@ -78,7 +78,7 @@ const unlikeCard = (req, res, next) => Card
     { new: true },
   )
   .orFail(new NotFoundError(`Карточка с id ${req.params.cardId} не найдена`))
-  .then((card) => res.status(200).send(card.likes))
+  .then((card) => res.status(200).send(card))
   .catch((err) => {
     if (err.name === 'CastError') {
       next(new BadRequestError('Некорректный id'));

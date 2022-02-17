@@ -125,7 +125,7 @@ const login = (req, res, next) => {
 
 const logout = (req, res, next) => {
   res.cookie('token', '', {
-    maxAge: 0, httpOnly: true, sameSite: false, secure: true,
+    maxAge: -1, httpOnly: true, sameSite: false, secure: true,
   })
     .end()
     .catch(next);
