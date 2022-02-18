@@ -1,7 +1,6 @@
 class Api {
-  constructor({ address, groupID, token }) {
+  constructor({ address }) {
     this._address = address;
-    this._token = token;
   }
 
   getAppInfo() { //метод полученя всей информации со стороны сервера
@@ -113,8 +112,7 @@ class Api {
 }
 
 const api = new Api({
-  address: "http://mesto.allison.backend.nomoredomains.work",
-  token: "624546b9-bde3-4fa2-b3a8-c5df4547d603"
+  address: "http://mesto.allison.backend.nomoredomains.work"
 })
   
 export default api
