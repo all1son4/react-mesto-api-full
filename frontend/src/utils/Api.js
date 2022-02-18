@@ -112,7 +112,7 @@ class Api {
 }
 
 const api = new Api({
-  address: "http://mesto.allison.backend.nomoredomains.work"
+  address: "http://localhost:3000"
 })
   
 export default api

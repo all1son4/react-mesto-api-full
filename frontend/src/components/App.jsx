@@ -36,13 +36,9 @@ function App() {
   React.useEffect(() => {
     auth
       .getCurrentUserInfo()
-      .then((res) => {
-        if (res) {
-          setLoggedIn(true);
-        }
-      })
-      .catch(err => alert(`Ошибка полученя данных и авторизации: ${err}`))
-  },[])
+      .then(() => setLoggedIn(true))
+      .catch(() => setLoggedIn(false))
+    },[])
 
   React.useEffect(()=> {
     if (!loggedIn) return;

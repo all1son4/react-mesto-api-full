@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://mesto.allison.backend.nomoredomains.work';
+export const BASE_URL = 'http://localhost:3000';
 
 export const register = (values) => {
   return fetch(`${BASE_URL}/signup`, {
@@ -9,9 +9,6 @@ export const register = (values) => {
     body: JSON.stringify(values)
   })
   .then(res => getResponseData(res))
-  .then((res) => {
-    return res;
-  })
 };
 export const authorize = (values) => {
   return fetch(`${BASE_URL}/signin`, {
@@ -47,7 +44,7 @@ export const getCurrentUserInfo = () => {
 const getResponseData = (res) => {
   console.log(res)
   if (res.ok) {
-    return res.json();
+    return res.json().then(j => Promise.resolve(j));
   }
   else {
     return Promise.reject(`${res.status}`);
