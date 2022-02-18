@@ -18,7 +18,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 });
 
 app.use(cors({
-  origin: 'http://mestoofallison.nomoredomains.work',
+  origin: 'https://mestoofallison.nomoredomains.work',
   credentials: true,
 }));
 
