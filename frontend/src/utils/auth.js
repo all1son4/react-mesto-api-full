@@ -42,7 +42,6 @@ export const getCurrentUserInfo = () => {
     credentials: 'include'
   })
   .then(res => getResponseData(res))
-  .then(data => data)
 }
 
 const getResponseData = (res) => {

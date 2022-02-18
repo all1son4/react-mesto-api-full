@@ -17,17 +17,15 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
 });
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
-
-app.use(requestLogger);
-
 app.use(cors({
   origin: 'http://mestoofallison.nomoredomains.work',
   credentials: true,
 }));
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use(requestLogger);
 app.use(errorLogger);
 
 app.get('/crash-test', () => {

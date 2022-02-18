@@ -37,7 +37,7 @@ function App() {
     auth
       .getCurrentUserInfo()
       .then((res) => {
-        if (res.ok) {
+        if (res) {
           setLoggedIn(true);
         }
       })
@@ -210,10 +210,10 @@ function App() {
     <div className="page__container">
       <Header loggedIn={loggedIn} onLogout={handleLogout} email={userMail}/>
       <Routes>
-        <Route path="/signin" element={loggedIn ? <Navigate to='/' /> : <Login  onLogin={handleLogin}/>}>
-        </Route>
         <Route path="/signup" element={<Register onClose={closeAllPopups}
                                                   onOverlayClick={handleOverlayClick}/>}>
+        </Route>
+        <Route path="/signin" element={loggedIn ? <Navigate to='/' /> : <Login  onLogin={handleLogin}/>}>
         </Route>
         <Route exact path="/" element={
           <CurrentUserContext.Provider value={currentUser}>
