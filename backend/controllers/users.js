@@ -124,9 +124,7 @@ const login = (req, res, next) => {
 };
 
 const logout = (req, res) => {
-  res.cookie('jwt', 'none', { 
-    maxAge: 3600000 * 24 * 7, httpOnly: true, sameSite: 'None', secure: true }).status(200).send({ message: 'Токен удален'})
-  .end()
+  res.clearCookie('jwt');
 };
 
 module.exports = {

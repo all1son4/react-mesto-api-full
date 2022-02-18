@@ -195,7 +195,7 @@ function App() {
         .then(() => {
           setLoggedIn(false);
           setUserMail('');
-          window.location.href = '/';
+          navigate('/signin');
         })
         .catch(err => alert(`Ошибка попытки выхода: ${err}`))
   }
