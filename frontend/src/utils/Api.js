@@ -103,7 +103,7 @@ class Api {
 
   _getResponseData(res) {
     if (res.ok) {
-      return res.json();
+      return res.json().then(j => Promise.resolve(j));
     }
     else {
       return Promise.reject(`${res.status}`);
