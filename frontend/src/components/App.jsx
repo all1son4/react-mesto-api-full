@@ -195,7 +195,7 @@ function App() {
         .then(() => {
           setLoggedIn(false);
           setUserMail('');
-          navigate('/');
+          navigate('/signin');
         })
         .catch(err => alert(`Ошибка попытки выхода: ${err}`))
   }

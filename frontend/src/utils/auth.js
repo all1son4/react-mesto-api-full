@@ -28,6 +28,7 @@ export const logout = () => {
       'Content-Type': 'application/json',
     },
   })
+  .then(res => getResponseData(res))
 }
 
 export const getCurrentUserInfo = () => {
