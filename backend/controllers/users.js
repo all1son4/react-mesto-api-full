@@ -119,9 +119,7 @@ const login = (req, res, next) => {
 };
 
 const logout = (req, res) => {
-  res.cookie('jwt', '', {
-    expire: Date.now(), httpOnly: true, sameSite: 'None', secure: true
-  }).status(200).send({ message: 'Токен удален' });
+  res.status(200).clearCookie('jwt').send({ message: 'Выход' });
 };
 
 module.exports = {
