@@ -22,11 +22,7 @@ const getUser = (req, res, next) => {
     .orFail(new NotFoundError(`Пользователь с id ${id} не найден`))
     .then((user) => res.status(200).send(user))
     .catch((err) => {
-      if (err.name === 'CastError') {
-        next(new BadRequestError('Некорректный id'));
-      } else {
-        next(err);
-      }
+      next(err);
     });
 };
 
@@ -123,9 +119,7 @@ const login = (req, res, next) => {
 };
 
 const logout = (req, res) => {
-  res.cookie('jwt', '', {
-    maxAge: 3600000 * 24 * 7, httpOnly: true, sameSite: 'None', secure: true,
-  }).status(200).send({ message: 'Токен удален' });
+  res.status(200).clearCookie('jwt').send({ message: 'Выход' });
 };
 
 module.exports = {

@@ -18,7 +18,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 });
 
 app.use(cors({
-  origin: 'https://mestoofallison.nomoredomains.work',
+  origin: [ 'https://mestoofallison.nomoredomains.work', 'http://mestoofallison.nomoredomains.work' ],
   credentials: true,
 }));
 
@@ -26,7 +26,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(requestLogger);
-app.use(errorLogger);
 
 app.get('/crash-test', () => {
   setTimeout(() => {
@@ -35,6 +34,7 @@ app.get('/crash-test', () => {
 });
 
 app.use(routes);
+app.use(errorLogger);
 app.use(errors());
 app.use(errorHandler);
 
