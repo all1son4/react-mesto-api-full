@@ -107,7 +107,6 @@ const updateAvatar = (req, res, next) => User
   });
 
 const login = (req, res, next) => {
-  console.log('1');
   const { email, password } = req.body;
 
   return User
@@ -116,7 +115,7 @@ const login = (req, res, next) => {
       const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'jwtsecret');
 
       res.cookie('jwt', token, {
-        maxAge: 3600000 * 24 * 7, httpOnly: true, sameSite: 'None', secure: true
+        maxAge: 3600000 * 24 * 7, httpOnly: true, sameSite: 'None', secure: true,
       })
         .send(user.toJSON());
     })
@@ -124,8 +123,9 @@ const login = (req, res, next) => {
 };
 
 const logout = (req, res) => {
-  res.cookie('jwt', 'none', { 
-    maxAge: 3600000 * 24 * 7, httpOnly: true, sameSite: 'None', secure: true }).status(200).send({ message: 'Токен удален'})
+  res.cookie('jwt', '', {
+    maxAge: 3600000 * 24 * 7, httpOnly: true, sameSite: 'None', secure: true,
+  }).status(200).send({ message: 'Токен удален' });
 };
 
 module.exports = {

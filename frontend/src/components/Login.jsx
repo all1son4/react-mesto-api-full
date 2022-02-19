@@ -38,7 +38,6 @@ function Login({onLogin}) {
     auth
         .authorize(values)
         .then(res => {
-          console.log('AUTH')
           if (res.statusCode !== 400 || 401 ) {
               onLogin();
               navigate('/');

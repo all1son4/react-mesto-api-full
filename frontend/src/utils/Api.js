@@ -86,7 +86,6 @@ class Api {
     const options = {
       method,
       headers: {
-        // authorization: this._token,
         "Content-Type": "application/json"
       },
       credentials: 'include',

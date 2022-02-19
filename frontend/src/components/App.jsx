@@ -172,20 +172,7 @@ function App() {
 
   const handleLogin = () => {
       setLoggedIn(true);
-    console.log('LOGIN')
   }
-
-  // const SetHeaderMail = () => {
-  //     auth
-  //         .getCurrentUserInfo()
-  //         .then((res => {
-  //           if (res) {
-  //             setUserMail(res.email);
-  //             console.log('SET EMAIL')
-  //           }
-  //         }))
-  //         .catch(err => alert(`Ошибка полученя данных: ${err}`))
-  //   }
 
   const handleLogout = (event) => {
     event.preventDefault()
@@ -199,8 +186,6 @@ function App() {
         })
         .catch(err => alert(`Ошибка попытки выхода: ${err}`))
   }
-
-  console.log('PAGE RENDER', loggedIn)
 
   return (
     <div className="page__container">

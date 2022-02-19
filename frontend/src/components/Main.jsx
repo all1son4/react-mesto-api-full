@@ -25,7 +25,6 @@ function Main(props) {
 
       <section className="elements page__content">
         {cards.map((card) => {
-          console.log(card)
           return (
             <Card name={card.name}
                   link={card.link}

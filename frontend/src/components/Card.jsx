@@ -3,9 +3,6 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 function Card(props) {
   const currentUser = React.useContext(CurrentUserContext);
-  console.log(currentUser)
-  console.log(props.likes)
-
 
   const isLiked = props.likes.some(i => i === currentUser._id);
   const cardLikeButtonClassName = (
@@ -17,7 +14,6 @@ function Card(props) {
   }
 
   function handleLikeClick() {
-    console.log('LIKE')
     props.onCardLike(props.card)
   }
 
