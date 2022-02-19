@@ -111,7 +111,7 @@ const login = (req, res, next) => {
       const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'jwtsecret');
 
       res.cookie('jwt', token, {
-        maxAge: 3600000 * 24 * 7, httpOnly: true, sameSite: 'None', secure: true,
+        maxAge: 3600000 * 24 * 7, httpOnly: true, sameSite: 'None', secure: true, expires: Date.now()
       })
         .send(user.toJSON());
     })
@@ -119,7 +119,9 @@ const login = (req, res, next) => {
 };
 
 const logout = (req, res) => {
-  res.status(200).clearCookie('jwt').send({ message: 'Выход' });
+  req.session.destroy(() => {
+    res.clearCookie('jwt').end();
+  })
 };
 
 module.exports = {
