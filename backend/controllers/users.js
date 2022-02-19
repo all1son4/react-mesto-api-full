@@ -111,7 +111,7 @@ const login = (req, res, next) => {
       const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'jwtsecret');
 
       res.cookie('jwt', token, {
-        maxAge: 3600000 * 24 * 7, httpOnly: true, sameSite: 'None', secure: true, expires: Date.now()
+        expire: 3600000 * 24 * 7 + Date.now(), httpOnly: true, sameSite: 'None', secure: true
       })
         .send(user.toJSON());
     })
@@ -119,9 +119,9 @@ const login = (req, res, next) => {
 };
 
 const logout = (req, res) => {
-  req.session.destroy(() => {
-    res.clearCookie('jwt').end();
-  })
+  res.cookie('jwt', '', {
+    expire: Date.now(), httpOnly: true, sameSite: 'None', secure: true
+  }).status(200).send({ message: 'Токен удален' });
 };
 
 module.exports = {
